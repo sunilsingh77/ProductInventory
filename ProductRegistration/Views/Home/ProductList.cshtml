@@ -1,0 +1,11 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2><strong>Product List Page </strong></h2><br /><br />
+            Hello @User.Identity.Name!, Role @User.FindFirst(claim=>claim.Type==System.Security.Claims.ClaimTypes.Role)?.Value
+            <a asp-action="logout" asp-controller="Home">
+                Logout
+            </a>
+        </div>
+    </div>
+</div>

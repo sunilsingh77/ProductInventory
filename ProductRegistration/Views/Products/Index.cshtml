@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ProductRegistration.Models.Product>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container shadow p-5">
+    @if (TempData["SuccessMsg"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMsg"]
+        </div>
+    }
+    <h1 class="text-center">Product List</h1>
+
+    <div class="col mb-3">
+        <a asp-controller="Products" asp-action="Create" class="btn btn-primary">Add Product</a>
+    </div>
+    @if (Model.Any())
+    {
+        <table class="table table-light table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Product Id</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Quantity</th>
+                    <th scope="col">Brand </th>
+                    <th scope="col">Image</th>
+                    <th scope="col">IsActive</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="15%">
+                            @item.ProductId
+                        </td>
+                        <td width="15%">
+                            @item.Name
+                        </td>
+                        <td width="10%">
+                            @item.Name
+                        </td>
+                        <td width="10%">
+                            @item.Quantity
+                        </td>
+                        <td width="10%">
+                            @item.Brand
+                        </td>
+                        <td width="10%">
+                            @item.Image
+                        </td>
+                        <td width="10%">
+                            @item.IsActive
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.ProductId" class=" btn btn-success">Edit Product</a>
+                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-primary">Delete Product</a>
+                            <a asp-controller="Products" asp-action="Activate" asp-route-id="@item.ProductId" class="btn btn-primary">Activate/Deactive</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-header">
+                No Product Added Yet
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            Hello @User.Identity.Name!, Role @User.FindFirst(claim=>claim.Type==System.Security.Claims.ClaimTypes.Role)?.Value
+            <a asp-action="logout" asp-controller="Home">
+                Logout
+            </a>
+        </div>
+    </div>
+</div>
