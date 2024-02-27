@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ProductRegistration/obj
+/.vs/ProductRegistration
+/ProductRegistration/Migrations
+/ProductRegistration/bin/Debug/net7.0
